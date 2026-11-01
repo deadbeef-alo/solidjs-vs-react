@@ -1,13 +1,38 @@
 import { Title } from '@solidjs/meta';
+import { formAction } from '@solidjs/router';
 
-// The layout's index page: what /users itself renders inside users.tsx,
-// whose nav already lists every user. Without an index, /users would fall
-// through to the [...404] catch-all.
-export default function UsersIndex() {
+const submitAddress = formAction(handleSubmit);
+
+async function handleSubmit(form: FormData) {
+  let name = form.get('name') as string;
+  let street = form.get('street') as string;
+  let phone = form.get('phone') as string;
+
+  let input: string = [name, street, phone].join(', ');
+
+  alert(input);
+}
+
+export default function FormsIndex() {
   return (
     <section>
       <Title>Forms - Solid App</Title>
-      <p>Pick a user above.</p>
+      <p>A basic form.</p>
+      <form method="post" action={submitAddress}>
+        <label>
+          Name
+          <input name="name" required />
+        </label>
+        <label>
+          Street
+          <input name="street" required />
+        </label>
+        <label>
+          Phone number
+          <input name="phone" />
+        </label>
+        <button type="submit">Continue to shipping</button>
+      </form>
     </section>
   );
 }
