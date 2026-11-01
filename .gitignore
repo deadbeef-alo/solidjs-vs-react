@@ -1,5 +1,15 @@
+# General
 /handout
 /solidjs1.0
 */node_modules
+*/package-lock.json
 
+# SolidJS
 solidjs/bench-app/file-routes.d.ts
+
+# PW
+*/test-results/
+*/playwright-report/
+*/blob-report/
+*/playwright/.cache/
+*/playwright/.auth/
