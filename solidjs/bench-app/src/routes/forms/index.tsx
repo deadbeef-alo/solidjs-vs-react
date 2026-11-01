@@ -34,6 +34,7 @@ export default function FormsIndex() {
         <label>
           Name
           <input
+            id="fp-field-name"
             name="name"
             value={name()}
             onInput={(event) => setName(event.currentTarget.value)}
@@ -42,6 +43,7 @@ export default function FormsIndex() {
         <label>
           Street
           <input
+            id="fp-field-street"
             name="street"
             value={street()}
             onInput={(event) => setStreet(event.currentTarget.value)}
@@ -50,11 +52,12 @@ export default function FormsIndex() {
         <label>
           Phone number
           <input
+            id="fp-field-phone"
             name="phone"
             value={phone()}
             onInput={(event) => setPhone(event.currentTarget.value)} />
         </label>
-        <button type="submit">Create</button>
+        <button id="fp-btn-submit" type="submit">Create</button>
       </form>
       <CardList>
         <For each={profiles}>
