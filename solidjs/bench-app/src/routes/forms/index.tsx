@@ -1,38 +1,68 @@
 import { Title } from '@solidjs/meta';
-import { formAction } from '@solidjs/router';
-
-const submitAddress = formAction(handleSubmit);
-
-async function handleSubmit(form: FormData) {
-  let name = form.get('name') as string;
-  let street = form.get('street') as string;
-  let phone = form.get('phone') as string;
-
-  let input: string = [name, street, phone].join(', ');
-
-  alert(input);
-}
+import { Profile } from '../../lib/profile';
+import CardList from '../../components/CardList';
+import Card from '../../components/Card';
+import { createSignal, createStore, For } from 'solid-js';
 
 export default function FormsIndex() {
+  const [name, setName] = createSignal('');
+  const [street, setStreet] = createSignal('');
+  const [phone, setPhone] = createSignal('');
+
+  const [profiles, setProfiles] = createStore<Profile[]>([]);
+
+  const createProfile = () =>
+    setProfiles((profile) => {
+      profile.push({
+        name: name(),
+        street: street(),
+        phone: phone()
+    });
+  });
+
   return (
     <section>
       <Title>Forms - Solid App</Title>
       <p>A basic form.</p>
-      <form method="post" action={submitAddress}>
+      <form onSubmit={(event) => {
+          event.preventDefault();
+          createProfile()
+        }}>
         <label>
           Name
-          <input name="name" required />
+          <input
+            name="name"
+            value={name()}
+            onInput={(event) => setName(event.currentTarget.value)}
+            required />
         </label>
         <label>
           Street
-          <input name="street" required />
+          <input
+            name="street"
+            value={street()}
+            onInput={(event) => setStreet(event.currentTarget.value)}
+            required />
         </label>
         <label>
           Phone number
-          <input name="phone" />
+          <input
+            name="phone"
+            value={phone()}
+            onInput={(event) => setPhone(event.currentTarget.value)} />
         </label>
-        <button type="submit">Continue to shipping</button>
+        <button type="submit">Create</button>
       </form>
+      <CardList>
+        <For each={profiles}>
+          {(profile) => (
+            <Card
+              title={profile.name}
+              content={[profile.name, profile.street]}
+            />
+          )}
+        </For>
+      </CardList>
     </section>
   );
 }
