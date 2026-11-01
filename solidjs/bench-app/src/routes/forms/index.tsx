@@ -8,6 +8,7 @@ export default function FormsIndex() {
   const [name, setName] = createSignal('');
   const [street, setStreet] = createSignal('');
   const [phone, setPhone] = createSignal('');
+  const [count, setCount] = createSignal(0);
 
   const [profiles, setProfiles] = createStore<Profile[]>([]);
 
@@ -18,12 +19,14 @@ export default function FormsIndex() {
         street: street(),
         phone: phone()
     });
+    setCount(count()+1);
   });
 
   return (
     <section>
       <Title>Forms - Solid App</Title>
       <p>A basic form.</p>
+      <p>Entries: {count()}</p>
       <form onSubmit={(event) => {
           event.preventDefault();
           createProfile()

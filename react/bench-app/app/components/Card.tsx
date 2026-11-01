@@ -5,7 +5,7 @@ export interface CardProps {
 
 export default function Card(props: CardProps) {
   return (
-    <div>
+    <div className="grid-element">
       <h3>{props.title}</h3>
       <span>{props.content.join(', ')}</span>
     </div>

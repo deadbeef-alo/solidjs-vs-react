@@ -7,6 +7,7 @@ export default function FormPage() {
   const [name, setName] = useState('');
   const [street, setStreet] = useState('');
   const [phone, setPhone] = useState('');
+  const [count, setCount] = useState(0);
 
   const [profiles, setProfiles] = useState<Profile[]>([]);
 
@@ -17,12 +18,14 @@ export default function FormPage() {
       street: street,
       phone: phone
     }]);
+    setCount(count+1);
   }
 
   return (
     <section>
       <title>Forms - React</title>
       <p>A basic form.</p>
+      <p>Entries: {count}</p>
       <form onSubmit={(event) => {
           event.preventDefault();
           createProfile()

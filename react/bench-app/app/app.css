@@ -7,6 +7,19 @@ body {
   text-align: center;
 }
 
+.grid-element {
+  border: 2px solid black;
+  min-width: 100px;
+}
+
+.grid-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px;
+  margin: 0 auto;
+}
+
 .framework-text {
   position: absolute;
   left: 1em;
