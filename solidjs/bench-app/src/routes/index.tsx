@@ -2,7 +2,6 @@ import { Title } from '@solidjs/meta';
 import type { RouteDefinition } from '@solidjs/router';
 import { For, Show, createMemo } from 'solid-js';
 
-import Counter from '../components/Counter';
 import { getCurrentUser, getUsers, login, logout } from '../lib/users';
 import logo from '../logo.svg';
 
@@ -27,7 +26,6 @@ export default function Home() {
       <Title>Home - Solid App</Title>
       <img src={logo} class="logo" alt="Solid logo" />
       <h1>Hello Solid!</h1>
-      <Counter />
       <p>
         Edit <code>src/routes/index.tsx</code> and save to reload.
       </p>

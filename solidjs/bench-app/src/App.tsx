@@ -2,8 +2,9 @@ import { Title } from '@solidjs/meta';
 import { Loading } from 'solid-js';
 // Typed client env, validated and baked in at build time (see env.ts).
 import { env } from 'virtual:solid-env/client';
-import { paths, Router } from './router';
+import { Router } from './router';
 import './App.css';
+import Nav from './components/Nav';
 
 export default function App() {
   return (
@@ -11,11 +12,7 @@ export default function App() {
       {(props) => (
         <>
           <Title>{env.VITE_APP_NAME}</Title>
-          <nav class="site-nav">
-            <a href={paths()}>Home</a>
-            <a href={paths.users()}>Users</a>
-            <a href={paths.forms()}>Forms (Bench)</a>
-          </nav>
+          <Nav />
           <Loading fallback={<main>Loading…</main>}>{props.children}</Loading>
         </>
       )}

@@ -7,6 +7,15 @@ body {
   text-align: center;
 }
 
+.framework-text {
+  position: absolute;
+  left: 1em;
+  padding-top: 1.3em;
+  font-size: large;
+  font-family: serif;
+  color: white;
+}
+
 .site-nav {
   padding: 1rem;
   background-color: #282c34;
