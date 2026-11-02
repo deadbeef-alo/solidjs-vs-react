@@ -1,6 +1,6 @@
 import { test, expect, Page } from '@playwright/test';
 
-const iterations = 100;
+const iterations = 200;
 
 const react_port = '5173';
 const solid_port = '3000';
@@ -12,12 +12,12 @@ const field_street = '#fp-field-street';
 const field_phone = '#fp-field-phone';
 const btn_submit = '#fp-btn-submit';
 
-test('Forms (SolidJS)', async ({ page }) => {
+test('Forms_SolidJS', async ({ page }) => {
   url = 'http://localhost:' + solid_port + '/forms'
   title = /Forms - Solid App/;
 });
 
-test('Forms (React)', async ({ page }) => {
+test('Forms_React', async ({ page }) => {
   url = 'http://localhost:' + react_port + '/forms'
   title = /Forms - React/;
 });
