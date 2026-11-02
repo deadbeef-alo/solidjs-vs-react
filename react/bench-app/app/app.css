@@ -7,6 +7,30 @@ body {
   text-align: center;
 }
 
+.dot {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.traffic-gallery {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.traffic-light {
+  width: 100px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(211, 211, 211);
+  gap: 18px;
+  border: 2px solid black;
+}
+
 .grid-element {
   border: 2px solid black;
   min-width: 100px;

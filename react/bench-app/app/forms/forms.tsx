@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Card from "~/components/Card";
 import CardList from "~/components/CardList";
+import TrafficLight from "~/components/TrafficLight";
 import type { Profile } from "~/lib/profile";
 
 export default function FormPage() {
@@ -8,6 +9,7 @@ export default function FormPage() {
   const [street, setStreet] = useState('');
   const [phone, setPhone] = useState('');
   const [count, setCount] = useState(0);
+  const [traffic, setTraffic] = useState(0);
 
   const [profiles, setProfiles] = useState<Profile[]>([]);
 
@@ -19,13 +21,38 @@ export default function FormPage() {
       phone: phone
     }]);
     setCount(count+1);
-  }
+    handleTraffic();
+  };
+
+  const handleTraffic = () => {
+    setTraffic(traffic+1);
+    if(traffic == 2)
+      setTraffic(0);
+  };
 
   return (
     <section>
       <title>Forms - React</title>
       <p>A basic form.</p>
       <p>Entries: {count}</p>
+      <div className="traffic-gallery">
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+      </div>
       <form onSubmit={(event) => {
           event.preventDefault();
           createProfile()

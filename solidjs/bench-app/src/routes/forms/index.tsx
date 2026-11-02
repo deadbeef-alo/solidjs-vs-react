@@ -3,12 +3,14 @@ import { Profile } from '../../lib/profile';
 import CardList from '../../components/CardList';
 import Card from '../../components/Card';
 import { createSignal, createStore, For } from 'solid-js';
+import TrafficLight from '../../components/TrafficLight';
 
 export default function FormsIndex() {
   const [name, setName] = createSignal('');
   const [street, setStreet] = createSignal('');
   const [phone, setPhone] = createSignal('');
   const [count, setCount] = createSignal(0);
+  const [traffic, setTraffic] = createSignal(0);
 
   const [profiles, setProfiles] = createStore<Profile[]>([]);
 
@@ -20,13 +22,38 @@ export default function FormsIndex() {
         phone: phone()
     });
     setCount(count()+1);
+    handleTraffic();
   });
+
+  const handleTraffic = () => {
+    setTraffic(traffic()+1);
+    if(traffic() == 2)
+      setTraffic(0);
+  };
 
   return (
     <section>
       <Title>Forms - Solid App</Title>
       <p>A basic form.</p>
       <p>Entries: {count()}</p>
+      <div class="traffic-gallery">
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+        <TrafficLight iterator={traffic()} />
+      </div>
       <form onSubmit={(event) => {
           event.preventDefault();
           createProfile()
