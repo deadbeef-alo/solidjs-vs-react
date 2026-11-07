@@ -1,12 +1,13 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
-const iterations = 200;
+const iterations = 100;
 
 const react_port = '5173';
 const solid_port = '3000';
 let url: string;
 let title: RegExp;
 
+const field_count = '#fp-field-count';
 const field_name = '#fp-field-name';
 const field_street = '#fp-field-street';
 const field_phone = '#fp-field-phone';
@@ -26,7 +27,8 @@ test.afterEach(async ({ page }) => {
   await page.goto(url);
   await expect(page).toHaveTitle(title);
 
-  for(let i = 0; i < iterations; i++) { 
+  for(let i = 0; i < iterations; i++) {
+    await expect(page.locator(field_count)).toHaveText('Entries: ' + i);
     await page.locator(field_name).fill('Peter' + i);
     await page.locator(field_street).fill('Goethestr. ' + i);
     await page.locator(field_phone).fill('0157342194443');

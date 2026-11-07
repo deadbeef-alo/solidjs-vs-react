@@ -34,7 +34,25 @@ export default function FormPage() {
     <section>
       <title>Forms - React</title>
       <p>A basic form.</p>
-      <p>Entries: {count}</p>
+      <p id="fp-field-count">Entries: {count}</p>
+      <div className="traffic-gallery">
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+        <TrafficLight iterator={traffic} />
+      </div>
       <div className="traffic-gallery">
         <TrafficLight iterator={traffic} />
         <TrafficLight iterator={traffic} />
